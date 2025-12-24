@@ -55,14 +55,14 @@ export const initialTeams: Team[] = [
   },
   {
     id: '3',
-    name: 'Team Aman',
+    name: 'Team Ankit',
     budget: 1600,
     playersBought: 0,
     players: []
   },
   {
     id: '4',
-    name: 'Team Mehul',
+    name: 'Team Vivek',
     budget: 1600,
     playersBought: 0,
     players: []
