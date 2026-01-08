@@ -14,14 +14,14 @@ const isAuctionComplete = (teams: Team[]): boolean => {
 };
 
 const FinalTeamsList: React.FC<{ teams: Team[] }> = ({ teams }) => (
-  <div className="space-y-8">
-    <h2 className="text-2xl font-bold text-center">Final Team Compositions</h2>
+  <div className="space-y-8  ">
+    <h2 className="text-2xl font-bold text-center text-black">Final Team Compositions</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {teams.map(team => (
-        <div key={team.id} className="bg-white rounded-lg p-6 shadow-lg">
-          <h3 className="text-xl font-bold mb-4">{team.name}</h3>
-          <p className="mb-2">Remaining Budget: {team.budget} points</p>
-          <ul className="space-y-2">
+        <div key={team.id} className="bg-white rounded-lg p-6 shadow-lg text-black">
+          <h3 className="text-xl font-bold mb-4 text-black">{team.name}</h3>
+          <p className="mb-2text-black text-black">Remaining Budget: {team.budget} points</p>
+          <ul className="space-y-2 text-black">
             {team.players.map(player => (
               <li key={player.id}>
                 {player.name} - {player.currentBid} points
