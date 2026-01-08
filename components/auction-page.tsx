@@ -179,11 +179,13 @@ export function AuctionPage() {
                   </div>
                 </div>
 
-                <div className="col-span-1 md:col-span-2 bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
-                  <TeamCard team={state.teams[4]} />
-                </div>
-                <div className=" bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
-                  <TeamCard team={state.teams[5]} />
+                <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+                    <TeamCard team={state.teams[4]} />
+                  </div>
+                  <div className="bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+                    <TeamCard team={state.teams[5]} />
+                  </div>
                 </div>
               </div>
             </div>
