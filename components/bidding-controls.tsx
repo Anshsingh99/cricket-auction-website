@@ -81,7 +81,7 @@ export function BiddingControls() {
 
   return (
     <div className="space-y-4 ">
-      <div className="flex gap-2">
+      <div className="flex gap-2 text-black">
         <Button onClick={handleDecrement}>-</Button>
         <Input
           type="number"
@@ -92,11 +92,11 @@ export function BiddingControls() {
             dispatch({ type: 'UPDATE_BID', amount: newBid })
             setInputValue(newBid.toString())
           }}
-          className="w-24 text-center"
+          className="w-24 text-center text-black"
         />
         <Button onClick={handleIncrement}>+</Button>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 text-black">
         <Select onValueChange={setSelectedTeam} value={selectedTeam || undefined}>
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Select team" />
@@ -104,7 +104,7 @@ export function BiddingControls() {
           <SelectContent>
             {teams.map(team => (
               <SelectItem
-                key={team.id}
+                key={team.id} 
                 value={team.id}
                 disabled={team.budget < currentPlayer.currentBid || team.playersBought >= 9}
               >
