@@ -81,90 +81,134 @@ export function AuctionPage() {
   }, [availablePlayers.length, unsoldPlayers.length, dispatch])
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-200 p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          SLS Cricket Auction - Round {state.currentRound}
-        </h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-6 text-white">
+  <div className="max-w-7xl mx-auto space-y-8">
 
-        {isAuctionComplete(state.teams) ? (
-          <FinalTeamsList teams={state.teams} />
-        ) : (
-          <>
-            <div className="flex justify-between items-center mb-4">
-              <div className="text-lg font-semibold">
-                Players to be Auctioned: {state.playersToAuction}
-              </div>
-              <div className="text-lg font-semibold">
-                Unsold Players: {state.unsoldPlayers}
-              </div>
+    {/* Header */}
+    <h1 className="text-4xl font-extrabold text-center tracking-wide">
+      🏏 <span className="text-yellow-400">SLS Cricket Auction</span>
+      <span className="block text-lg mt-2 text-blue-200">
+        Round {state.currentRound}
+      </span>
+    </h1>
+
+    {isAuctionComplete(state.teams) ? (
+      <FinalTeamsList teams={state.teams} />
+    ) : (
+      <>
+        {/* Scoreboard */}
+        <div className="flex justify-center gap-6">
+          <div className="bg-black/40 px-6 py-3 rounded-xl shadow-md border border-blue-500">
+            <span className="text-sm text-blue-300">Players Left</span>
+            <div className="text-2xl font-bold text-yellow-400">
+              {state.playersToAuction}
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
-              <div className="bg-white rounded-lg p-8 shadow-lg aspect-square">
-                {state.currentPlayer ? (
-                  <div className="flex flex-col items-center justify-center h-full gap-8">
-                    <PlayerCard player={state.currentPlayer} />
-                    <BiddingControls />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
-                    <div className="text-xl">Click 'Start Auction' to begin</div>
-                    <div className="flex flex-wrap justify-center gap-4">
-                      <Button
-                        onClick={handleStartAuction}
-                        disabled={isAnimating || availablePlayers.length === 0}
-                      >
-                        Start Auction
-                      </Button>
-                      <ManualSoldModal />
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <TeamCard key={state.teams[0].id} team={state.teams[0]} />
-                  <TeamCard key={state.teams[1].id} team={state.teams[1]} />
-                </div>
-                <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <TeamCard key={state.teams[2].id} team={state.teams[2]} />
-                  <TeamCard key={state.teams[3].id} team={state.teams[3]} />
-                </div>
-                <div className="col-span-1 md:col-span-2">
-                  <TeamCard key={state.teams[4].id} team={state.teams[4]} />
-                </div>
-              </div>
+          <div className="bg-black/40 px-6 py-3 rounded-xl shadow-md border border-red-500">
+            <span className="text-sm text-red-300">Unsold</span>
+            <div className="text-2xl font-bold text-red-400">
+              {state.unsoldPlayers}
             </div>
+          </div>
+        </div>
 
-            <div className="flex justify-center mt-4">
-              {state.transactions.length > 0 && (
-                <Button
-                  variant="outline"
-                  onClick={() => dispatch({ type: 'UNDO_TRANSACTION' })}
-                >
-                  Undo Last Transaction
-                </Button>
-              )}
-            </div>
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-            {unsoldPlayers.length > 0 && (
-              <div className="bg-white rounded-lg p-8 shadow-lg mt-8">
-                <h2 className="text-2xl font-bold mb-4">Unsold Players</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {unsoldPlayers.map(player => (
-                    <div key={player.id} className="text-sm">
-                      {player.name} ({player.type})
-                    </div>
-                  ))}
+          {/* Auction Stage */}
+          <div className="bg-gradient-to-br from-black/60 to-blue-900/60 rounded-2xl p-8 shadow-2xl border border-blue-500 aspect-square flex items-center justify-center">
+            {state.currentPlayer ? (
+              <div className="flex flex-col items-center gap-8 animate-pulse">
+                <div className="ring-4 ring-yellow-400/40 rounded-xl p-4">
+                  <PlayerCard player={state.currentPlayer} />
+                </div>
+                <BiddingControls />
+              </div>
+            ) : (
+              <div className="text-center space-y-4">
+                <div className="text-2xl font-bold text-yellow-400">
+                  Ready for the next bid?
+                </div>
+                <p className="text-blue-200 text-sm">
+                  Start the auction and let the bidding war begin 🔥
+                </p>
+                <div className="flex flex-wrap justify-center gap-4 mt-4">
+                  <Button
+                    className="bg-yellow-400 text-black hover:bg-yellow-300 px-6 py-3 rounded-xl font-bold shadow-lg active:scale-95 transition"
+                    onClick={handleStartAuction}
+                    disabled={isAnimating || availablePlayers.length === 0}
+                  >
+                    🚨 Start Auction
+                  </Button>
+                  <ManualSoldModal />
                 </div>
               </div>
             )}
-          </>
+          </div>
+
+          {/* Teams */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+                <TeamCard team={state.teams[0]} />
+              </div>
+              <div className="bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+                <TeamCard team={state.teams[1]} />
+              </div>
+            </div>
+
+            <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+                <TeamCard team={state.teams[2]} />
+              </div>
+              <div className="bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+                <TeamCard team={state.teams[3]} />
+              </div>
+            </div>
+
+            <div className="col-span-1 md:col-span-2 bg-black/50 rounded-xl border border-blue-500 shadow-lg hover:scale-[1.02] transition">
+              <TeamCard team={state.teams[4]} />
+            </div>
+          </div>
+        </div>
+
+        {/* Undo */}
+        {state.transactions.length > 0 && (
+          <div className="flex justify-center mt-6">
+            <Button
+              variant="outline"
+              className="border-red-400 text-red-400 hover:bg-red-400 hover:text-black font-semibold transition"
+              onClick={() => dispatch({ type: 'UNDO_TRANSACTION' })}
+            >
+              ⏪ Undo Last Bid
+            </Button>
+          </div>
         )}
-      </div>
-    </div>
+
+        {/* Unsold Players */}
+        {unsoldPlayers.length > 0 && (
+          <div className="bg-black/50 rounded-xl p-8 shadow-lg mt-8 border border-red-500">
+            <h2 className="text-2xl font-bold mb-4 text-red-400">
+              ❌ Unsold Players
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {unsoldPlayers.map(player => (
+                <div
+                  key={player.id}
+                  className="bg-red-900/40 px-4 py-2 rounded-lg text-sm border border-red-400 shadow"
+                >
+                  {player.name} <span className="text-red-300">({player.type})</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </>
+    )}
+  </div>
+</div>
+
   )
 }
 
