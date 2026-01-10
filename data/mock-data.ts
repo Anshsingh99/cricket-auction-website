@@ -31,7 +31,7 @@ export const initialPlayers: Player[] = [
   { id: '23', name: 'Prem', type: 'All-rounder', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
   { id: '24', name: 'Kishan', type: 'All-rounder', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
 
-  { id: '25', name: 'Jainish', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
+  { id: '25', name: 'Nitesh', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
   { id: '26', name: 'Samir', type: 'All-rounder', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
   { id: '27', name: 'Nikhil', type: 'All-rounder', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
 
@@ -61,7 +61,7 @@ export const initialPlayers: Player[] = [
 
   { id: '47', name: 'Vignesh', type: 'All-rounder', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
   { id: '48', name: 'Sanket', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
-  { id: '49', name: 'Dilesh Mary', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
+  { id: '49', name: 'Dilesh ', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
   { id: '50', name: 'Tanmay', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
 
   { id: '51', name: 'Aayush', type: 'Batter', basePrice: 20, currentBid: 20, image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', status: 'available' },
